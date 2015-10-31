@@ -10,7 +10,7 @@
 #refer to http://wiki.birth-online.de/know-how/software/linux/remapping-mousebuttons and http://ubuntuforums.org/archive/index.php/t-2094829.htmlfor more informations
 NAME='Logitech Unifying Device. Wireless PID:101d'
 #looking for device ID
-ids=$(xinput list | grep "$NAME" | grep -o -e "id=.." | xargs | sed "s/id=//g")
+ids=$(xinput list | grep "$NAME" | grep -o -e "id=.." | sed "s/id=//g")
 echo -e "\033[1;32myour are going to switch mapping settings of your \033[0;0m Logitech Mice! \033[1;32m"
 echo -e "make sure your device is \033[0;0m$NAME\033[1;32m"
 echo "check using >xinput list< command first"
