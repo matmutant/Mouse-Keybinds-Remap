@@ -1,4 +1,13 @@
 #!/bin/bash
+#this script switches between two or more mapping for your unifying Logitech device
+#you need to manually edit the device name, since i couldn't automate this command
+#to know your current mapping use >xev< command, for your device list use >xinput list<
+#to add an option, just add a new "elif"
+#this has been done for M505, but should work for others
+#
+#Source code and README available here: https://github.com/matmutant/m505-Remap
+#
+#refer to http://wiki.birth-online.de/know-how/software/linux/remapping-mousebuttons and http://ubuntuforums.org/archive/index.php/t-2094829.htmlfor more informations
 NAME='Logitech Unifying Device. Wireless PID:101d'
 #looking for device ID
 ids=$(xinput list | grep "$NAME" | grep -o -e "id=.." | xargs | sed "s/id=//g")
