@@ -1,5 +1,5 @@
-# m505-Remap
-Automated remaping script for Logitech m505 mouse : changing buttons layout/behavior
+# Mouse-Keybinds-Remap
+Automated remaping script for Logitech m505/M705 mouse : changing buttons layout/behavior
 
 
 This script switches between two or more mapping for your unifying Logitech device
@@ -8,7 +8,9 @@ You need to manually edit the device name, since i couldn't automate this comman
   to know your current mapping use >xev< command, for your device list use >xinput list<
   To add an option, just add a new "elif"
 
-this has been done for M505, but should work for others
+this has been done for M505 and M705, but it should work for others
+
+Simply uncomment the mouse name or add a new one.
 
 ##How does it work?
 After you've hardcoded the device name in variable $NAME, the script will look for the ID corresponding to it:
