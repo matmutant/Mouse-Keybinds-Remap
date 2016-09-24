@@ -3,13 +3,16 @@
 #you need to manually edit the device name, since i couldn't automate this command
 #to know your current mapping use >xev< command, for your device list use >xinput list<
 #to add an option, just add a new "elif"
-#this has been done for M505, but should work for others
-#
-#Source code and README available here: https://github.com/matmutant/m505-Remap
-#
+#this has been done for M505 and M705, but should work for others
 #refer to http://wiki.birth-online.de/know-how/software/linux/remapping-mousebuttons and http://ubuntuforums.org/archive/index.php/t-2094829.htmlfor more informations
-NAME='Logitech M505/B605'
+
+#NAME='Logitech Unifying Device. Wireless PID:101d'
+#UnComment the needed name, or add a new one
+#NAME='MICE NAME'
+#NAME='Logitech M505/B605'
+NAME='Logitech M705'
 #looking for device ID
+#ids=$(xinput list | grep "$NAME" | grep -o -e "id=.." | xargs | sed "s/id=//g")
 ids=$(xinput list | grep "$NAME" | grep -o -e "id=.." | sed "s/id=//g")
 echo -e "\033[1;32myour are going to switch mapping settings of your \033[0;0m Logitech Mice! \033[1;32m"
 echo -e "make sure your device is \033[0;0m$NAME\033[1;32m"
