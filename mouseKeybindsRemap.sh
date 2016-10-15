@@ -18,23 +18,33 @@ echo -e "\033[1;32myour are going to switch mapping settings of your \033[0;0m L
 echo -e "make sure your device is \033[0;0m$NAME\033[1;32m"
 echo "check using >xinput list< command first"
 echo -e "your mice ID is : \033[0;0m$ids\033[1;32m"
-echo "option 1 is remapped settings : custom left/right click"
-echo "option 2 is default mappig!"
+echo "option 0 is default mappig!"
+echo "option 1 and 2 are remapped settings : custom left/right click"
+echo "option 1 : use wheel right and left click to emulate standard right and left click"
+echo "option 2 : use thumb click to emulate left click"
+
 read -p 'option 1/2? (anything else to exit):' opt0
 echo "your choice is $opt0"
-if [ $opt0 -eq 1 ]
-then
-	echo -e "setting opt1 (\033[0;0m$opt0\033[1;32m)"
+case $opt0 in
+	#check which option has been choosen
+	#Option 0
+	[0] ) echo -e "setting opt0 (\033[0;0m$opt0\033[1;32m)"
 	#calling xinput to remap the buttons
-	echo `xinput set-button-map $ids 6 2 7 4 5 1 3`
-elif [ $opt0 -eq 2 ]
-then
-	echo -e "setting opt2 (\033[0;0m$opt0\033[1;32m)"
+	echo `xinput set-button-map $ids 1 2 3 4 5 6 7 8 9 10`
+	;;
+	#Option 1
+	[1] ) echo -e "setting opt1 (\033[0;0m$opt0\033[1;32m)"
 	#calling xinput to remap the buttons
-	echo `xinput set-button-map $ids 1 2 3 4 5 6 7`
-	#sleep 10
-else
-	echo -e "\033[1;31msomething went wrong : \033[1;32mnot a valid option!"
-fi
+	echo `xinput set-button-map $ids 6 2 7 4 5 1 3 8 9 10`
+	;;
+	#Option 2
+	[2] ) echo -e "setting opt2 (\033[0;0m$opt0\033[1;32m)"
+	#calling xinput to remap the buttons
+	echo `xinput set-button-map $ids 1 2 3 4 5 6 7 8 9 1`
+	;;
+	#invalid Option
+	* ) echo -e "\033[1;31msomething went wrong : \033[1;32mnot a valid option!"
+	;;
+esac
 echo -e "\033[0;0mwill now exit"
 sleep 10
