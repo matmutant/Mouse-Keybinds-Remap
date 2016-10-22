@@ -1,22 +1,30 @@
 #!/bin/bash
-#this script switches between two or more mapping for your unifying Logitech device
-#you need to manually edit the device name, since i couldn't automate this command
+#this script switches between two or more mapping for any mouse-like device
+#you need to pass the device id to the script as argument when launching it
 #to know your current mapping use >xev< command, for your device list use >xinput list<
 #to add an option, just add a new "elif"
-#this has been done for M505 and M705, but should work for others
 #refer to http://wiki.birth-online.de/know-how/software/linux/remapping-mousebuttons and http://ubuntuforums.org/archive/index.php/t-2094829.htmlfor more informations
 
-#NAME='Logitech Unifying Device. Wireless PID:101d'
-#UnComment the needed name, or add a new one
-#NAME='MICE NAME'
-#NAME='Logitech M505/B605'
-NAME='Logitech M705'
-#looking for device ID
-#ids=$(xinput list | grep "$NAME" | grep -o -e "id=.." | xargs | sed "s/id=//g")
-ids=$(xinput list | grep "$NAME" | grep -o -e "id=.." | sed "s/id=//g")
+#uses argument $1 as mouse id
+ids=$1
+
+#checks if the user passed the argument to the script after the script name
+if [ -z $1 ]
+	then 
+	echo "No argument passed to script"
+	echo "Find your device name in the list below"
+	echo "Then use the number corresponding to id=[] as argument to launch the script"
+	echo "e.g.: for id=14"
+	echo "./mouseKeybindsRemap.sh 14"
+	echo ""
+	echo `xinput --list` | sed -e "s/\[[a-z]* [a-z]*[ ]*([0-9])\][ ]*/\\n/g"
+	echo ""
+	echo "NB: to modify the available modes, edit the script."
+	sleep 10
+exit; fi
+
+#switches between modes
 echo -e "\033[1;32myour are going to switch mapping settings of your \033[0;0m Logitech Mice! \033[1;32m"
-echo -e "make sure your device is \033[0;0m$NAME\033[1;32m"
-echo "check using >xinput list< command first"
 echo -e "your mice ID is : \033[0;0m$ids\033[1;32m"
 echo "option 0 is default mappig!"
 echo "option 1 and 2 are remapped settings : custom left/right click"
