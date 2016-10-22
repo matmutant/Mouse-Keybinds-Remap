@@ -1,3 +1,4 @@
+#LEGACY script, kept as is for reference
 # Mouse-Keybinds-Remap
 Automated remaping script for Logitech m505/M705 mouse : changing buttons layout/behavior
 
