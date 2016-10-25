@@ -2,7 +2,7 @@
 #this script switches between two or more mapping for any mouse-like device
 #you need to pass the device id to the script as argument when launching it
 #to know your current mapping use >xev< command, for your device list use >xinput list<
-#to add an option, just add a new "elif"
+#to add an option, just add a new item in the case and a new customX variable
 #refer to http://wiki.birth-online.de/know-how/software/linux/remapping-mousebuttons and http://ubuntuforums.org/archive/index.php/t-2094829.htmlfor more informations
 
 #uses argument $1 as mouse id
